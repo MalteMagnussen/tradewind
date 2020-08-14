@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -20,7 +21,40 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Tradewind'),
       ),
-      body: Center(child: Image.asset('assets/images/sidebar-0.jpg')),
+      body: ListView(
+        children: <Widget>[
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fitHeight,
+                        image: NetworkImage('https://i.imgur.com/bedZcex.jpg'),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Center(
+                      child: Text(
+                        'Tradewind',
+                        style: Theme.of(context).textTheme.headline2.merge(
+                              TextStyle(color: Colors.white),
+                            ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

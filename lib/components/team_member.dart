@@ -52,7 +52,10 @@ class TeamMember extends StatelessWidget {
                     ),
               ),
               color: Theme.of(context).colorScheme.secondary,
-              onPressed: () => Utility.launchURL(email),
+              onPressed: () {
+                // TODO - https://stackoverflow.com/questions/58704973/mailto-link-for-flutter-for-web
+                Utility.launchURL(email);
+              },
             )
           ],
         ),

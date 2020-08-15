@@ -41,6 +41,8 @@ class TeamMember extends StatelessWidget {
               ),
             ),
             RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
               child: Text(
                 email,
                 style: Theme.of(context).textTheme.button.merge(

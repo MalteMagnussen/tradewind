@@ -6,6 +6,8 @@ class Sidemenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      // TODO - https://stackoverflow.com/questions/47951907/change-flutter-drawer-background-color
+      // TODO - https://stackoverflow.com/questions/56620719/flutter-drawer-background-image
       child: ListView(
         children: [
           DrawerHeader(

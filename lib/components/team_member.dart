@@ -22,7 +22,9 @@ class TeamMember extends StatelessWidget {
         elevation: 3,
         child: Column(
           children: [
-            Expanded(
+            Container(
+              height: 200,
+              width: 200,
               child: Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: CircleAvatar(
@@ -41,6 +43,11 @@ class TeamMember extends StatelessWidget {
             RaisedButton(
               child: Text(
                 email,
+                style: Theme.of(context).textTheme.button.merge(
+                      TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
               ),
               color: Theme.of(context).colorScheme.secondary,
               onPressed: () => Utility.launchURL(email),

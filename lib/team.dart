@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tradewind/components/team_member.dart';
-import 'package:tradewind/sidemenu.dart';
 
 class Team extends StatelessWidget {
   final Widget drawer;

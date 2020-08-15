@@ -37,6 +37,7 @@ class TeamMember extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
+                // TODO - https://pub.dev/packages/auto_size_text
                 child: Text(text, style: Theme.of(context).textTheme.bodyText1),
               ),
             ),

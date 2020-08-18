@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'file:///D:/tradewind/lib/ui/views/homepage.dart';
-import 'file:///D:/tradewind/lib/ui/views/team.dart';
 
 class Sidemenu extends StatelessWidget {
   @override

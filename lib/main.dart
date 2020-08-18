@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tradewind/app/services/firebase_auth_service.dart';
-import 'file:///D:/tradewind/lib/ui/views/navigation/sidemenu.dart';
-import 'file:///D:/tradewind/lib/ui/views/team.dart';
 import 'package:tradewind/ui/views/authentication/sign_in/sign_in_view.dart';
 import 'package:tradewind/ui/views/authentication/sign_out/widgets/sign_out_button.dart';
-import 'ui/views/homepage.dart';
+import 'package:tradewind/ui/views/homepage.dart';
+import 'package:tradewind/ui/views/navigation/sidemenu.dart';
+import 'package:tradewind/ui/views/team.dart';
 
 void main() => runApp(
       /// Inject the [FirebaseAuthService]

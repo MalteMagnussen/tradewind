@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:tradewind/app/constants/strings.dart';
 import 'package:tradewind/ui/views/authentication/sign_in/sign_in_vew_model.dart';
 import 'package:tradewind/ui/views/authentication/sign_in/widgets/google_sign_in_button.dart';
@@ -55,6 +54,6 @@ class SignInViewBody extends StatelessWidget {
   }
 
   Widget _signInButtons(BuildContext context) {
-    return GoogleSignInButton();
+    return Center(child: GoogleSignInButton());
   }
 }

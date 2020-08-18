@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tradewind/homepage.dart';
-import 'package:tradewind/team.dart';
+import 'file:///D:/tradewind/lib/ui/views/homepage.dart';
+import 'file:///D:/tradewind/lib/ui/views/team.dart';
 
 class Sidemenu extends StatelessWidget {
   @override
@@ -32,6 +32,14 @@ class Sidemenu extends StatelessWidget {
             onTap: () => Navigator.pushNamed(
               context,
               '/team',
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.desktop_windows),
+            title: Text('Forecasting'),
+            onTap: () => Navigator.pushNamed(
+              context,
+              '/forecast',
             ),
           ),
           AboutListTile(

@@ -21,13 +21,18 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  google_sign_in: ^4.5.1
-  provider: ^4.3.2
-  url_launcher: ^5.1.4
-  url_launcher_web: ^0.1.0
-  firebase_auth: ^0.18.0
   flutter:
     sdk: flutter
+  # State
+  provider: ^4.3.2
+  # Misc
+  url_launcher: ^5.1.4
+  url_launcher_web: ^0.1.0
+  # Authentication
+  google_sign_in: ^4.5.1
+  firebase_auth: ^0.18.0
+  # UI
+  flutter_auth_buttons: ^0.8.0
 
 
 

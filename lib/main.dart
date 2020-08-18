@@ -1,11 +1,33 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tradewind/sidemenu.dart';
-import 'package:tradewind/team.dart';
-import 'homepage.dart';
+import 'package:provider/provider.dart';
+import 'package:tradewind/app/services/firebase_auth_service.dart';
+import 'file:///D:/tradewind/lib/ui/views/navigation/sidemenu.dart';
+import 'file:///D:/tradewind/lib/ui/views/team.dart';
+import 'package:tradewind/ui/views/authentication/sign_in/sign_in_view.dart';
+import 'package:tradewind/ui/views/authentication/sign_out/widgets/sign_out_button.dart';
+import 'ui/views/homepage.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(
+      /// Inject the [FirebaseAuthService]
+      /// and provide a stream of [User]
+      ///
+      /// This needs to be above [MaterialApp]
+      /// At the top of the widget tree, to
+      /// accomodate for navigations in the app
+      MultiProvider(
+        providers: [
+          Provider(
+            create: (_) => FirebaseAuthService(),
+          ),
+          StreamProvider(
+            create: (context) =>
+                context.read<FirebaseAuthService>().onAuthStateChanged,
+          ),
+        ],
+        child: MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -20,6 +42,13 @@ class MyApp extends StatelessWidget {
         },
         '/team': (context) {
           return Team(drawer: Sidemenu());
+        },
+        '/forecast': (context) {
+          return Consumer<User>(
+            builder: (context, user, child) {
+              return user != null ? SignOutButton() : SignInView();
+            },
+          );
         }
       },
       theme: ThemeData(

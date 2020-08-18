@@ -46,7 +46,9 @@ class MyApp extends StatelessWidget {
         '/forecast': (context) {
           return Consumer<User>(
             builder: (context, user, child) {
-              return user != null ? SignOutButton() : SignInView();
+              return user != null
+                  ? SignOutButton()
+                  : SignInView(drawer: Sidemenu());
             },
           );
         }

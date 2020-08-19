@@ -9,8 +9,9 @@ class SignOutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
+      color: Theme.of(context).colorScheme.secondary,
       onPressed: () {
-        context.read<FirebaseAuthService>().signOut();
+        AuthService().signOut();
       },
       child: Text(Strings.signOut),
     );

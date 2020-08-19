@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tradewind/ui/views/navigation/sidemenu.dart';
+
+import 'navigation/appbar.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({
     Key key,
-    this.drawer,
   }) : super(key: key);
-
-  final Widget drawer;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -17,10 +17,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: widget.drawer,
-      appBar: AppBar(
-        title: Text('Tradewind'),
-      ),
+      drawer: Sidemenu(),
+      appBar: TradewindAppBar(),
       body: ListView(
         children: <Widget>[
           Column(

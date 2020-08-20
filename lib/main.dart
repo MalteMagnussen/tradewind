@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:tradewind/app/services/firebase_auth_service.dart';
 import 'package:tradewind/ui/views/forecast.dart';
 import 'package:tradewind/ui/views/homepage.dart';
-import 'package:tradewind/ui/views/navigation/sidemenu.dart';
 import 'package:tradewind/ui/views/team.dart';
 
 void main() => runApp(

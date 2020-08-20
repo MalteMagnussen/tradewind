@@ -11,6 +11,7 @@ class TeamView extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        // ignore: non_constant_identifier_names
         final TeamMembers = [
           TeamMember(
             email: TradewindStrings.augustEmail,

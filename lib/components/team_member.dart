@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:tradewind/components/pill_button.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class TeamMember extends StatelessWidget {
   final String image;
@@ -19,12 +16,13 @@ class TeamMember extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Container(
-        height: 400,
+        height: 425,
         width: MediaQuery.of(context).size.width * 0.30,
         child: Card(
           elevation: 3,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 height: 200,
@@ -42,26 +40,18 @@ class TeamMember extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(text, style: Theme.of(context).textTheme.bodyText1),
               ),
-              TradewindButton(
-                email, // TODO - https://stackoverflow.com/questions/58704973/mailto-link-for-flutter-for-web
-                () async {
-                  try {
-                    await launch(email);
-                  } catch (e) {
-                    await Clipboard.setData(
-                      ClipboardData(
-                        text: email,
-                      ),
-                    );
-                    Scaffold.of(context).showSnackBar(
-                      SnackBar(
-                        content:
-                            Text('Copied email: $email to your Clipboard.'),
-                      ),
-                    );
-                  }
-                },
-              )
+              Card(
+                elevation: 6,
+                margin: EdgeInsets.symmetric(
+                  vertical: 10.0,
+                  horizontal: 25.0,
+                ),
+                child: ListTile(
+                  leading: Icon(Icons.email),
+                  title: SelectableText(email,
+                      style: Theme.of(context).textTheme.bodyText1),
+                ),
+              ),
             ],
           ),
         ),

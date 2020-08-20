@@ -17,7 +17,11 @@ class Team extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(top: 30.0),
         child: SafeArea(
-          child: TeamView(),
+          child: ListView(
+            children: [
+              TeamView(),
+            ],
+          ),
         ),
       ),
     );

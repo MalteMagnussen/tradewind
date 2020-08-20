@@ -29,7 +29,11 @@ class _HomePageState extends State<Forecast> {
         ),
       );
     } else {
-      return LoginPage();
+      return Scaffold(
+        drawer: Sidemenu(),
+        appBar: TradewindAppBar(),
+        body: LoginPage(),
+      );
     }
   }
 }

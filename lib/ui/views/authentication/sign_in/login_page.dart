@@ -86,6 +86,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(height: 20),
                       RaisedButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                         color: Theme.of(context).colorScheme.secondary,
                         onPressed: () async {
                           checkFields() {

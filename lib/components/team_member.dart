@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tradewind/components/pill_button.dart';
 import 'package:tradewind/utility/utility.dart';
 
 class TeamMember extends StatelessWidget {
@@ -15,50 +16,37 @@ class TeamMember extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.30,
-      height: MediaQuery.of(context).size.height * 0.5,
-      child: Card(
-        elevation: 3,
-        child: Column(
-          children: [
-            Container(
-              height: 200,
-              width: 200,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: CircleAvatar(
-                  radius: 100,
-                  backgroundImage: NetworkImage(image),
+    return IntrinsicHeight(
+      child: Container(
+        height: 400,
+        width: MediaQuery.of(context).size.width * 0.30,
+        child: Card(
+          elevation: 3,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 200,
+                width: 200,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: CircleAvatar(
+                    radius: 100,
+                    backgroundImage: NetworkImage(image),
+                  ),
                 ),
               ),
-            ),
-            Divider(),
-            Expanded(
-              child: Padding(
+              Divider(),
+              Padding(
                 padding: const EdgeInsets.all(8.0),
-                // TODO - https://pub.dev/packages/auto_size_text
                 child: Text(text, style: Theme.of(context).textTheme.bodyText1),
               ),
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
-              child: Text(
-                email,
-                style: Theme.of(context).textTheme.button.merge(
-                      TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-              ),
-              color: Theme.of(context).colorScheme.secondary,
-              onPressed: () {
-                // TODO - https://stackoverflow.com/questions/58704973/mailto-link-for-flutter-for-web
-                Utility.launchURL(email);
-              },
-            )
-          ],
+              TradewindButton(
+                email, // TODO - https://stackoverflow.com/questions/58704973/mailto-link-for-flutter-for-web
+                () => Utility.launchURL(email),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -56,7 +56,6 @@ class _LoginPageState extends State<LoginPage> {
                           autofocus: true,
                           decoration: InputDecoration(
                             hintText: 'Email',
-                            filled: true,
                           ),
                           validator: (value) {
                             if (value.isEmpty) {
@@ -90,6 +89,41 @@ class _LoginPageState extends State<LoginPage> {
                     child: Container(
                       height: 50.0,
                       child: TextFormField(
+                        onEditingComplete: () async {
+                          checkFields() {
+                            final form = formKey.currentState;
+                            if (form.validate()) {
+                              return true;
+                            } else {
+                              return false;
+                            }
+                          }
+
+                          if (checkFields()) {
+                            snackBar(
+                              'Processing Login',
+                              TextStyle(color: Colors.white),
+                            );
+
+                            var status =
+                                await AuthService().signIn(email, password);
+
+                            if (AuthService().isSignedIn() == false) {
+                              setState(() {
+                                error = status;
+                              });
+                              snackBar(
+                                status,
+                                TextStyle(color: Colors.red),
+                              );
+                            } else {
+                              snackBar(
+                                'Logged in! Welcome.',
+                                TextStyle(color: Colors.green),
+                              );
+                            }
+                          } else {}
+                        },
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: 'Password',

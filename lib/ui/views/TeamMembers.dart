@@ -29,14 +29,9 @@ class TeamView extends StatelessWidget {
             image: TradewindStrings.malteImage,
           )
         ];
-        if (constraints.maxWidth < 957) {
-          return ListView.separated(
-            itemCount: TeamMembers.length,
-            padding: EdgeInsets.all(10.0),
-            separatorBuilder: (context, index) => SizedBox(
-              height: 20,
-            ),
-            itemBuilder: (context, index) => TeamMembers[index],
+        if (constraints.maxWidth < 1300) {
+          return Column(
+            children: TeamMembers,
           );
         } else {
           return Row(

@@ -15,7 +15,7 @@ class Team extends StatelessWidget {
       drawer: Sidemenu(),
       appBar: TradewindAppBar(),
       body: Padding(
-        padding: const EdgeInsets.only(top: 30.0),
+        padding: const EdgeInsets.only(top: 10.0),
         child: SafeArea(
           child: ListView(
             children: [

@@ -14,10 +14,11 @@ class TeamMember extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Container(
-        height: 425,
-        width: MediaQuery.of(context).size.width * 0.30,
+    return Container(
+      height: 450,
+      width: 400,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Card(
           elevation: 3,
           child: Column(
@@ -46,10 +47,13 @@ class TeamMember extends StatelessWidget {
                   vertical: 10.0,
                   horizontal: 25.0,
                 ),
-                child: ListTile(
-                  leading: Icon(Icons.email),
-                  title: SelectableText(email,
-                      style: Theme.of(context).textTheme.bodyText1),
+                child: Container(
+                  width: 350,
+                  child: ListTile(
+                    leading: Icon(Icons.email),
+                    title: SelectableText(email,
+                        style: Theme.of(context).textTheme.bodyText1),
+                  ),
                 ),
               ),
             ],

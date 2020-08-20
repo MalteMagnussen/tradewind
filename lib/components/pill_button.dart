@@ -13,7 +13,7 @@ class TradewindButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.0),
       ),
       color: Theme.of(context).colorScheme.secondary,
-      onPressed: () => callBack,
+      onPressed: callBack,
       child: Text(
         buttonText,
         style: Theme.of(context).textTheme.button.merge(

@@ -29,138 +29,136 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) => Center(
-        child: Container(
-          height: 300.0,
-          width: 400.0,
-          child: Column(
-            children: <Widget>[
-              Form(
-                key: formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    if (error != null)
-                      Text(
-                        error,
-                        style: TextStyle(color: Colors.red),
-                      ),
-                    Padding(
-                        padding: EdgeInsets.only(
-                            left: 25.0, right: 25.0, top: 20.0, bottom: 5.0),
-                        child: Container(
-                          height: 50.0,
-                          child: TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            cursorColor: TradewindColors.primaryColor,
-                            autofocus: true,
-                            decoration: InputDecoration(
-                              hintText: 'Email',
-                              filled: true,
-                            ),
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Email is required';
-                              } else {
-                                String validateEmail(String value) {
-                                  Pattern pattern =
-                                      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-                                  RegExp regex = new RegExp(pattern);
-                                  if (!regex.hasMatch(value))
-                                    return 'Enter Valid Email';
-                                  else
-                                    return null;
-                                }
-
-                                return validateEmail(value.trim());
-                              }
-                            },
-                            onChanged: (value) {
-                              this.email = value;
-                            },
-                          ),
-                        )),
-                    Padding(
+    return Center(
+      child: Container(
+        height: 300.0,
+        width: 400.0,
+        child: Column(
+          children: <Widget>[
+            Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  if (error != null)
+                    Text(
+                      error,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  Padding(
                       padding: EdgeInsets.only(
-                        left: 25.0,
-                        right: 25.0,
-                        top: 20.0,
-                        bottom: 5.0,
-                      ),
+                          left: 25.0, right: 25.0, top: 20.0, bottom: 5.0),
                       child: Container(
                         height: 50.0,
                         child: TextFormField(
-                          obscureText: true,
+                          keyboardType: TextInputType.emailAddress,
+                          cursorColor: TradewindColors.primaryColor,
+                          autofocus: true,
                           decoration: InputDecoration(
-                            hintText: 'Password',
+                            hintText: 'Email',
+                            filled: true,
                           ),
-                          validator: (value) => value.isEmpty
-                              ? TradewindStrings.passwordRequired
-                              : null,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Email is required';
+                            } else {
+                              String validateEmail(String value) {
+                                Pattern pattern =
+                                    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                                RegExp regex = new RegExp(pattern);
+                                if (!regex.hasMatch(value))
+                                  return 'Enter Valid Email';
+                                else
+                                  return null;
+                              }
+
+                              return validateEmail(value.trim());
+                            }
+                          },
                           onChanged: (value) {
-                            this.password = value;
+                            this.email = value;
                           },
                         ),
+                      )),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 25.0,
+                      right: 25.0,
+                      top: 20.0,
+                      bottom: 5.0,
+                    ),
+                    child: Container(
+                      height: 50.0,
+                      child: TextFormField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          hintText: 'Password',
+                        ),
+                        validator: (value) => value.isEmpty
+                            ? TradewindStrings.passwordRequired
+                            : null,
+                        onChanged: (value) {
+                          this.password = value;
+                        },
                       ),
                     ),
-                    SizedBox(height: 20),
-                    RaisedButton(
-                      padding: EdgeInsets.all(10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      color: Theme.of(context).colorScheme.secondary,
-                      onPressed: () async {
-                        checkFields() {
-                          final form = formKey.currentState;
-                          if (form.validate()) {
-                            return true;
-                          } else {
-                            return false;
-                          }
+                  ),
+                  SizedBox(height: 20),
+                  RaisedButton(
+                    padding: EdgeInsets.all(10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    color: Theme.of(context).colorScheme.secondary,
+                    onPressed: () async {
+                      checkFields() {
+                        final form = formKey.currentState;
+                        if (form.validate()) {
+                          return true;
+                        } else {
+                          return false;
                         }
+                      }
 
-                        if (checkFields()) {
+                      if (checkFields()) {
+                        snackBar(
+                          'Processing Login',
+                          TextStyle(color: Colors.white),
+                        );
+
+                        var status =
+                            await AuthService().signIn(email, password);
+
+                        if (AuthService().isSignedIn() == false) {
+                          setState(() {
+                            error = status;
+                          });
                           snackBar(
-                            'Processing Login',
-                            TextStyle(color: Colors.white),
+                            status,
+                            TextStyle(color: Colors.red),
                           );
-
-                          var status =
-                              await AuthService().signIn(email, password);
-
-                          if (AuthService().isSignedIn() == false) {
-                            setState(() {
-                              error = status;
-                            });
-                            snackBar(
-                              status,
-                              TextStyle(color: Colors.red),
-                            );
-                          } else {
-                            snackBar(
-                              'Logged in! Welcome.',
-                              TextStyle(color: Colors.green),
-                            );
-                          }
-                        } else {}
-                      },
-                      child: Text(
-                        'Sign in',
-                        style: Theme.of(context).textTheme.button.merge(
-                              TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
+                        } else {
+                          snackBar(
+                            'Logged in! Welcome.',
+                            TextStyle(color: Colors.green),
+                          );
+                        }
+                      } else {}
+                    },
+                    child: Text(
+                      'Sign in',
+                      style: Theme.of(context).textTheme.button.merge(
+                            TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
                             ),
-                      ),
+                          ),
                     ),
-                  ],
-                ),
-              )
-            ],
-          ),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

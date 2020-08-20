@@ -5,12 +5,7 @@ import 'package:tradewind/ui/views/authentication/sign_in/login_page.dart';
 import 'package:tradewind/ui/views/navigation/appbar.dart';
 import 'package:tradewind/ui/views/navigation/sidemenu.dart';
 
-class Forecast extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<Forecast> {
+class Forecast extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tradewind/components/pill_button.dart';
-import 'package:tradewind/utility/utility.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TeamMember extends StatelessWidget {
   final String image;
@@ -43,7 +44,23 @@ class TeamMember extends StatelessWidget {
               ),
               TradewindButton(
                 email, // TODO - https://stackoverflow.com/questions/58704973/mailto-link-for-flutter-for-web
-                () => Utility.launchURL(email),
+                () async {
+                  try {
+                    await launch(email);
+                  } catch (e) {
+                    await Clipboard.setData(
+                      ClipboardData(
+                        text: email,
+                      ),
+                    );
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content:
+                            Text('Copied email: $email to your Clipboard.'),
+                      ),
+                    );
+                  }
+                },
               )
             ],
           ),

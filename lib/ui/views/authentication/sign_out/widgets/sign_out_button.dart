@@ -10,7 +10,7 @@ class SignOutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: TradewindButton(Strings.signOut, AuthService().signOut()),
+      child: TradewindButton(TradewindStrings.signOut, AuthService().signOut()),
     );
   }
 }

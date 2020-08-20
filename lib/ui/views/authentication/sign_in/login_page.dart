@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tradewind/app/constants/strings.dart';
 import 'package:tradewind/app/services/firebase_auth_service.dart';
 import 'package:tradewind/ui/views/navigation/appbar.dart';
 import 'package:tradewind/ui/views/navigation/sidemenu.dart';
@@ -76,8 +77,9 @@ class _LoginPageState extends State<LoginPage> {
                           child: TextFormField(
                             obscureText: true,
                             decoration: InputDecoration(hintText: 'Password'),
-                            validator: (value) =>
-                                value.isEmpty ? 'Password is required' : null,
+                            validator: (value) => value.isEmpty
+                                ? TradewindStrings.passwordRequired
+                                : null,
                             onChanged: (value) {
                               this.password = value;
                             },

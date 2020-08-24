@@ -54,9 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                           keyboardType: TextInputType.emailAddress,
                           cursorColor: TradewindColors.primaryColor,
                           autofocus: true,
-                          decoration: InputDecoration(
-                            hintText: 'Email',
-                          ),
+                          decoration: buildInputDecoration('Email'),
                           validator: (value) {
                             if (value.isEmpty) {
                               return 'Email is required';
@@ -125,9 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                           } else {}
                         },
                         obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                        ),
+                        decoration: buildInputDecoration('Password'),
                         validator: (value) => value.isEmpty
                             ? TradewindStrings.passwordRequired
                             : null,
@@ -193,6 +189,26 @@ class _LoginPageState extends State<LoginPage> {
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  InputDecoration buildInputDecoration(String hintText) {
+    return InputDecoration(
+      hintText: hintText,
+      fillColor: Colors.white,
+      filled: true,
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.white,
+          width: 2.0,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: TradewindColors.primaryColor,
+          width: 2.0,
         ),
       ),
     );

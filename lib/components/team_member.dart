@@ -20,7 +20,7 @@ class TeamMember extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Card(
-          elevation: 3,
+          elevation: 2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,7 +42,7 @@ class TeamMember extends StatelessWidget {
                 child: Text(text, style: Theme.of(context).textTheme.bodyText1),
               ),
               Card(
-                elevation: 6,
+                elevation: 3,
                 margin: EdgeInsets.symmetric(
                   vertical: 10.0,
                   horizontal: 25.0,

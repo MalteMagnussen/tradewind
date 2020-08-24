@@ -13,7 +13,7 @@ class Forecast extends StatelessWidget {
     if (user != null) {
       return Scaffold(
         drawer: Sidemenu(),
-        appBar: TradewindAppBar(),
+        appBar: TradewindAppBar('Tradewind'),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -26,7 +26,7 @@ class Forecast extends StatelessWidget {
     } else {
       return Scaffold(
         drawer: Sidemenu(),
-        appBar: TradewindAppBar(),
+        appBar: TradewindAppBar('Tradewind'),
         body: LoginPage(),
       );
     }

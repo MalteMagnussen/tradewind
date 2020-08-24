@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
         primaryTextTheme: Typography.whiteMountainView,
         dividerColor: Color(0xffBDBDBD),
         secondaryHeaderColor: Color(0xff757575),
+        textTheme: Typography.blackMountainView,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the

@@ -18,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Sidemenu(),
-      appBar: TradewindAppBar(),
+      appBar: TradewindAppBar('Tradewind'),
       body: ListView(
         children: <Widget>[
           Column(

@@ -10,8 +10,18 @@ class SignOutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: TradewindButton(
-          TradewindStrings.signOut, () => AuthService().signOut()),
+      child: TradewindButton(TradewindStrings.signOut, () {
+        Scaffold.of(context).hideCurrentSnackBar();
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'You have been signed out.',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        );
+        return AuthService().signOut();
+      }),
     );
   }
 }

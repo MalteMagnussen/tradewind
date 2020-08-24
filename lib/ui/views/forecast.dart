@@ -27,17 +27,7 @@ class Forecast extends StatelessWidget {
       return Scaffold(
         drawer: Sidemenu(),
         appBar: TradewindAppBar(),
-        body: Stack(
-          children: <Widget>[
-            Image.network(
-              "https://i.imgur.com/e230NDK.jpg",
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
-            ),
-            LoginPage(),
-          ],
-        ),
+        body: LoginPage(),
       );
     }
   }

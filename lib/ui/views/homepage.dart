@@ -26,15 +26,11 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               Stack(
                 children: [
-                  Container(
+                  Image.network(
+                    'https://i.imgur.com/bedZcex.jpg',
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.fitHeight,
-                        image: NetworkImage('https://i.imgur.com/bedZcex.jpg'),
-                      ),
-                    ),
+                    fit: BoxFit.cover,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),

@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
     return Stack(
       children: <Widget>[
         Image.network(
-          "https://i.imgur.com/e230NDK.jpg",
+          'https://i.imgur.com/e230NDK.jpg',
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.cover,
